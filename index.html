@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>μLearn AJCE - Hero Section</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      :root {
+        scroll-padding-top: 80px;
+      }
+      :root {
+        scroll-padding-top: 80px; /* Same as your navbar height */
+      }
+
+      .page-section {
+        min-height: 100vh;
+        padding: 100px 20px;
+        background: white;
+        border-top: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .page-section h2 {
+        font-size: 2.5rem;
+        color: #7c3aed;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="navbar-container">
+        <a href="#" class="navbar-logo">
+          <div class="logo-icon">μ</div>
+          <span>μlearn</span>
+        </a>
+
+        <ul class="navbar-menu">
+          <li class="navbar-item">
+            <a href="#home" class="navbar-link">Home</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#about" class="navbar-link">About</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#highlights" class="navbar-link">Highlights</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#team" class="navbar-link">Our Team</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#contact" class="navbar-link">Contact</a>
+          </li>
+        </ul>
+
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+
+      <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-menu-list">
+          <li class="mobile-menu-item">
+            <a href="#home" class="mobile-menu-link">Home</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a href="#about" class="mobile-menu-link">About</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a href="#highlights" class="mobile-menu-link">Highlights</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a href="#team" class="mobile-menu-link">Our Team</a>
+          </li>
+          <li class="mobile-menu-item">
+            <a href="#contact" class="mobile-menu-link">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section (Fixed id="home") -->
+    <section id="home" class="hero-section">
+      <div class="background-mesh">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+        <div class="mesh-element"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="container">
+          <div class="hero-text animate-slide-scale">
+            <div class="college-badge">
+              <div class="gradient-border">
+                <div class="badge-content">
+                  <span>AMAL JYOTHI COLLEGE OF ENGINEERING</span>
+                </div>
+              </div>
+            </div>
+
+            <h1 class="hero-title">
+              <span class="gradient-text">μLearn</span><br />
+              <span class="main-text">AJCE</span>
+            </h1>
+
+            <p class="hero-description">
+              Empowering AJCE students through peer-to-peer learning,
+              collaborative projects, and industry-ready skill development.
+            </p>
+
+            <div class="hero-buttons animate-fade-up">
+              <button class="btn-primary" onclick="handleJoinClick()">
+                Join μLearn
+                <svg
+                  class="btn-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+
+              <button class="btn-secondary" onclick="handleExploreClick()">
+                Explore More
+                <svg
+                  class="btn-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Feature Cards -->
+          <div class="features-grid animate-slide-left">
+            <div class="feature-card glass-morphism">
+              <div class="feature-content">
+                <svg
+                  class="feature-icon violet"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+                  />
+                </svg>
+                <div class="feature-text">
+                  <h3>Peer Learning</h3>
+                  <p>
+                    Collaborate and grow with like-minded peers in real-time
+                    learning environments.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card glass-morphism">
+              <div class="feature-content">
+                <svg
+                  class="feature-icon purple"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <div class="feature-text">
+                  <h3>Goal-Oriented Growth</h3>
+                  <p>
+                    Set learning targets, track progress, and gain verifiable
+                    skills that matter.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card glass-morphism">
+              <div class="feature-content">
+                <svg
+                  class="feature-icon indigo"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                  />
+                </svg>
+                <div class="feature-text">
+                  <h3>Tech Exploration</h3>
+                  <p>
+                    Learn coding, web development, data science, and more with
+                    hands-on practice.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card glass-morphism">
+              <div class="feature-content">
+                <svg
+                  class="feature-icon fuchsia"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+                <div class="feature-text">
+                  <h3>Career Launchpad</h3>
+                  <p>
+                    Build your resume, join projects, and connect with mentors
+                    and industry experts.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Feature Cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Sections -->
+    <section id="about" class="page-section">
+      <h2>About</h2>
+    </section>
+
+    <section id="highlights" class="page-section">
+      <h2>Highlights</h2>
+    </section>
+
+    <section id="team" class="page-section">
+      <h2>Our Team</h2>
+    </section>
+
+    <section id="contact" class="page-section">
+      <h2>Contact</h2>
+    </section>
+  </body>
+</html>
