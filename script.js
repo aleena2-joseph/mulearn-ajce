@@ -149,3 +149,50 @@ function handleExploreClick() {
     aboutSection.scrollIntoView({ behavior: "smooth" });
   }
 }
+// About Section JavaScript
+document.addEventListener("DOMContentLoaded", function () {
+  let isVisible = false;
+
+  function handleScroll() {
+    const section = document.getElementById("about");
+    if (!section) return;
+
+    const sectionTop = section.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (sectionTop < windowHeight * 0.75 && !isVisible) {
+      isVisible = true;
+
+      // Animate text section
+      const textSection = document.querySelector(".text-section");
+      if (textSection) {
+        textSection.classList.add("visible");
+      }
+
+      // Animate visual section
+      const visualSection = document.querySelector(".visual-section");
+      if (visualSection) {
+        visualSection.classList.add("visible");
+      }
+
+      // Animate feature items with delays
+      const featureItems = document.querySelectorAll(".feature-item");
+      featureItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add("visible");
+        }, (index + 1) * 100); // 100ms delay between each item
+      });
+    }
+  }
+
+  // Add scroll event listener
+  window.addEventListener("scroll", handleScroll);
+
+  // Call handleScroll on page load to check initial position
+  handleScroll();
+
+  // Clean up event listener when page is unloaded (optional)
+  window.addEventListener("beforeunload", function () {
+    window.removeEventListener("scroll", handleScroll);
+  });
+});
