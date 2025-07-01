@@ -196,3 +196,31 @@ document.addEventListener("DOMContentLoaded", function () {
     window.removeEventListener("scroll", handleScroll);
   });
 });
+// Join MuLearn Section JavaScript
+document.addEventListener("DOMContentLoaded", function () {
+  let joinIsVisible = false;
+
+  function handleJoinScroll() {
+    const section = document.getElementById("join-mulearn-section");
+    if (!section) return;
+
+    const sectionTop = section.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (sectionTop < windowHeight * 0.75 && !joinIsVisible) {
+      joinIsVisible = true;
+      section.classList.add("join-visible");
+    }
+  }
+
+  // Add scroll event listener
+  window.addEventListener("scroll", handleJoinScroll);
+
+  // Call handleJoinScroll on page load to check initial position
+  handleJoinScroll();
+
+  // Clean up event listener when page is unloaded (optional)
+  window.addEventListener("beforeunload", function () {
+    window.removeEventListener("scroll", handleJoinScroll);
+  });
+});
