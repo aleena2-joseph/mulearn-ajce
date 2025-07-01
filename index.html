@@ -639,10 +639,128 @@
         </div>
       </div>
     </section>
-    <section id="highlights" class="page-section">
-      <h2>Highlights</h2>
-    </section>
 
+    <section id="highlights-section" class="highlights-section">
+      <!-- Light lavender top gradient overlay -->
+      <div class="highlights-gradient-overlay"></div>
+
+      <!-- Section header -->
+      <div class="highlights-container">
+        <div class="highlights-header">
+          <h4 class="highlights-title">Our Highlights</h4>
+        </div>
+        <p class="highlights-description">
+          Discover the diverse activities and opportunities that make our
+          community special. From hands-on workshops to collaborative projects,
+          there's something for everyone.
+        </p>
+      </div>
+
+      <!-- Infinite image scroller -->
+      <div class="highlights-scroller" aria-label="Highlight images gallery">
+        <div class="highlights-scroller-inner">
+          <!-- Images will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Image Modal -->
+      <div id="highlights-modal" class="highlights-modal">
+        <div class="highlights-modal-content">
+          <!-- Close button -->
+          <button class="highlights-modal-close" id="highlights-close-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="highlights-close-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          <!-- Main image and carousel -->
+          <div class="highlights-modal-image-section">
+            <!-- Main Image -->
+            <div class="highlights-modal-main-image">
+              <img
+                id="highlights-main-image"
+                src=""
+                alt=""
+                class="highlights-main-img"
+              />
+
+              <!-- Navigation arrows -->
+              <button
+                id="highlights-prev-btn"
+                class="highlights-nav-btn highlights-prev-btn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="highlights-nav-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+              <button
+                id="highlights-next-btn"
+                class="highlights-nav-btn highlights-next-btn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="highlights-nav-icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Thumbnail navigation -->
+            <div class="highlights-thumbnail-nav" id="highlights-thumbnail-nav">
+              <!-- Thumbnails will be populated by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="highlights-modal-content-section">
+            <h2 id="highlights-modal-title" class="highlights-modal-title"></h2>
+            <p
+              id="highlights-modal-counter"
+              class="highlights-modal-counter"
+            ></p>
+            <h3
+              id="highlights-modal-subtitle"
+              class="highlights-modal-subtitle"
+            ></h3>
+            <p
+              id="highlights-modal-description"
+              class="highlights-modal-desc"
+            ></p>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="team" class="page-section">
       <h2>Our Team</h2>
     </section>
