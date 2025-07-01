@@ -560,3 +560,324 @@ class HighlightsSection {
 document.addEventListener("DOMContentLoaded", () => {
   new HighlightsSection();
 });
+// Team Section JavaScript
+class TeamSection {
+  constructor() {
+    this.activeIndex = 0;
+    this.isVisible = false;
+    this.autoSlideInterval = null;
+
+    // Team members data
+    this.teamMembers = [
+      {
+        name: "Athul Mathew",
+        role: "Campus Co-Lead",
+        muid: "athulmathew@mulearn",
+        image: "assets/athul.jpeg",
+        linkedin: "https://www.linkedin.com/in/athul-mathew-b16202254/",
+      },
+      {
+        name: "Jibin Jacob",
+        role: "Operation Team Lead",
+        muid: "jibinjacob@mulearn",
+        image: "assets/jibin.png",
+        linkedin: "",
+      },
+      {
+        name: "Muzaid Musthafa",
+        role: "Operation Team",
+        muid: "muzaidmusthafa@mulearn",
+        image: "assets/muzaid.png",
+        linkedin: "",
+      },
+      {
+        name: "Alen Kuriakose",
+        role: "Operation Team",
+        muid: "alenkuriakose@mulearn",
+        image: "assets/alen.png",
+        linkedin: "http://www.linkedin.com/in/alen-kuriakose-69060b260",
+      },
+      {
+        name: "Bala Susan Jacob",
+        role: "Operation Team",
+        muid: "balasusanjacob@mulearn",
+        image: "assets/bala.png",
+        linkedin: "",
+      },
+      {
+        name: "Abin Thomas",
+        role: "Operation Team",
+        muid: "abinthomas-4@mulearn",
+        image: "assets/abin.jpg",
+        linkedin: "https://www.linkedin.com/in/abin-thomas-b33773265/",
+      },
+      {
+        name: "Kevin George",
+        role: "Media Team Lead",
+        muid: "kevingeorge@mulearn",
+        image: "assets/kevin.jpeg",
+        linkedin: "https://www.linkedin.com/in/kwingeorge",
+      },
+      {
+        name: "Neeva Sunish Mathew",
+        role: "Media Team",
+        muid: "neevasunishmathew@mulearn",
+        image: "assets/neeva.jpg",
+        linkedin: "https://www.linkedin.com/in/neevasunishmathew",
+      },
+      {
+        name: "Niyas",
+        role: "Media Team",
+        muid: "niyas-2@mulearn",
+        image: "assets/niyas.png",
+        linkedin: "",
+      },
+      {
+        name: "Deric Joseph",
+        role: "Media Team",
+        muid: "dericjoseph@mulearn",
+        image: "assets/deric.png",
+        linkedin: "https://www.linkedin.com/in/deric-joseph-3a0260279/",
+      },
+      {
+        name: "Pranav Siby",
+        role: "Tech Team Lead",
+        muid: "pranavsiby@mulearn",
+        image: "assets/pranav.png",
+        linkedin: "",
+      },
+      {
+        name: "Geo George",
+        role: "Tech Team",
+        muid: "geogeorge-1@mulearn",
+        image: "assets/geo.png",
+        linkedin: "https://www.linkedin.com/in/geo-george-883616276/",
+      },
+      {
+        name: "Sebin Saji",
+        role: "Tech Team",
+        muid: "Sebinsaji@mulearn",
+        image: "assets/sebin.jpeg",
+        linkedin: "https://linkedin.com/in/vishnuprasad",
+      },
+      {
+        name: "Aibal Jacob Mani",
+        role: "Design Team Lead",
+        muid: "aibaljacobmani@mulearn",
+        image: "assets/aibalmani.jpg",
+        linkedin: "https://www.linkedin.com/in/aibal-jacob-mani-40a623286/",
+      },
+      {
+        name: "Athira Biju",
+        role: "Design Team",
+        muid: "athirabiju@mulearn",
+        image: "assets/athira.jpg",
+        linkedin: "https://www.linkedin.com/in/athira-biju-4a1b21300/",
+      },
+      {
+        name: "Aleena Joseph",
+        role: "Web Lead",
+        muid: "aleenajoseph-4@mulearn",
+        image: "assets/aleena.png",
+        linkedin: "https://www.linkedin.com/in/aleena-joseph-1151442b9/",
+      },
+      {
+        name: "Alfred P Benjamin",
+        role: "Entrepreneurship Lead",
+        muid: "alfredpbenjamin@mulearn",
+        image: "assets/alfred.jpeg",
+        linkedin:
+          "https://www.linkedin.com/in/alfred-p-benjamin-675066246/?originalSubdomain=in",
+      },
+    ];
+
+    this.init();
+  }
+
+  init() {
+    this.setupEventListeners();
+    this.setupScrollObserver();
+    this.renderTeamMembers();
+    this.renderProgressIndicators();
+    this.startAutoSlide();
+    this.setVisible(true);
+  }
+
+  setupEventListeners() {
+    // Navigation buttons
+    const prevBtn = document.querySelector(".team-prev-btn");
+    const nextBtn = document.querySelector(".team-next-btn");
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => this.goToPrev());
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => this.goToNext());
+    }
+  }
+
+  setupScrollObserver() {
+    const handleScroll = () => {
+      const section = document.getElementById("team");
+      if (section) {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (sectionTop < windowHeight * 0.75) {
+          this.setVisible(true);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial state
+  }
+
+  setVisible(visible) {
+    this.isVisible = visible;
+    const container = document.querySelector(".team-container");
+    if (container) {
+      if (visible) {
+        container.classList.remove("team-hidden");
+      } else {
+        container.classList.add("team-hidden");
+      }
+    }
+  }
+
+  startAutoSlide() {
+    this.autoSlideInterval = setInterval(() => {
+      this.goToNext();
+    }, 5000);
+  }
+
+  stopAutoSlide() {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+      this.autoSlideInterval = null;
+    }
+  }
+
+  goToNext() {
+    this.activeIndex =
+      this.activeIndex === this.teamMembers.length - 1
+        ? 0
+        : this.activeIndex + 1;
+    this.renderTeamMembers();
+    this.updateProgressIndicators();
+  }
+
+  goToPrev() {
+    this.activeIndex =
+      this.activeIndex === 0
+        ? this.teamMembers.length - 1
+        : this.activeIndex - 1;
+    this.renderTeamMembers();
+    this.updateProgressIndicators();
+  }
+
+  goToIndex(index) {
+    this.activeIndex = index;
+    this.renderTeamMembers();
+    this.updateProgressIndicators();
+  }
+
+  getVisibleMembers() {
+    const visibleMembers = [];
+    for (let i = 0; i < 5; i++) {
+      const index = (this.activeIndex + i) % this.teamMembers.length;
+      visibleMembers.push(this.teamMembers[index]);
+    }
+    return visibleMembers;
+  }
+
+  renderTeamMembers() {
+    const grid = document.getElementById("teamMembersGrid");
+    if (!grid) return;
+
+    const visibleMembers = this.getVisibleMembers();
+
+    grid.innerHTML = visibleMembers
+      .map(
+        (member) => `
+      <div class="team-member-card">
+        <div class="team-member-image-container">
+          <img src="${member.image}" alt="${member.name}" class="team-member-image">
+          <div class="team-member-gradient"></div>
+        </div>
+        <div class="team-member-info">
+          <h3 class="team-member-name">${member.name}</h3>
+          <p class="team-member-role">${member.role}</p>
+          <div class="team-member-footer">
+            <span class="team-member-muid">${member.muid}</span>
+            <a href="${member.linkedin}" class="team-member-linkedin" aria-label="${member.name}'s LinkedIn" target="_blank" rel="noopener noreferrer">
+              <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    `
+      )
+      .join("");
+  }
+
+  renderProgressIndicators() {
+    const container = document.getElementById("teamProgressIndicators");
+    if (!container) return;
+
+    container.innerHTML = this.teamMembers
+      .map(
+        (_, index) => `
+      <button class="team-progress-dot ${
+        index === this.activeIndex ? "active" : ""
+      }" 
+              data-index="${index}" 
+              aria-label="Go to team member ${index + 1}">
+      </button>
+    `
+      )
+      .join("");
+
+    // Add click event listeners to progress dots
+    container.querySelectorAll(".team-progress-dot").forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        this.goToIndex(index);
+        this.stopAutoSlide();
+        this.startAutoSlide(); // Restart auto-slide after manual interaction
+      });
+    });
+  }
+
+  updateProgressIndicators() {
+    const dots = document.querySelectorAll(".team-progress-dot");
+    dots.forEach((dot, index) => {
+      if (index === this.activeIndex) {
+        dot.classList.add("active");
+      } else {
+        dot.classList.remove("active");
+      }
+    });
+  }
+}
+
+// Initialize the team section when the DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  new TeamSection();
+});
+
+// Handle page visibility change to pause/resume auto-slide
+document.addEventListener("visibilitychange", () => {
+  const teamSection = window.teamSectionInstance;
+  if (teamSection) {
+    if (document.hidden) {
+      teamSection.stopAutoSlide();
+    } else {
+      teamSection.startAutoSlide();
+    }
+  }
+});
+
+// Export for potential external use
+window.TeamSection = TeamSection;
